@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>The Headshot Club — Brand Guidelines</title>
+<title>The Headshot Club — Brand Guidelines, Volume 02</title>
 <style>
   :root{
     --ink:#1A1A1A; --bone:#F4EFE6; --terracotta:#A8572C; --cypress:#3D5447;
@@ -28,8 +28,9 @@
   .sec{background:#fff;border:1px solid var(--rule);border-radius:8px;padding:36px 38px;margin-top:22px;}
   .sec > .eyebrow{color:var(--terracotta);}
   .sec h2{font-family:var(--serif);font-weight:400;font-size:28px;margin:10px 0 6px;}
-  .sec .lede{color:#3a3a3a;font-size:15px;max-width:70ch;margin:0 0 18px;}
+  .sec .lede{color:#3a3a3a;font-size:15px;max-width:72ch;margin:0 0 18px;}
   .sub{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:26px 0 12px;}
+  .note{font-size:13.5px;color:#3a3a3a;max-width:72ch;margin:0 0 12px;}
   code{background:var(--bone);border:1px solid var(--rule);border-radius:4px;padding:1px 7px;font-size:12.5px;font-family:ui-monospace,Menlo,Consolas,monospace;}
 
   .frame::before,.frame::after,.frame .fc::before,.frame .fc::after{content:"";position:absolute;width:18px;height:18px;border-color:currentColor;border-style:solid;border-width:0;opacity:.85;}
@@ -49,6 +50,11 @@
   .logo-cap{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:center;margin:18px 0 0;}
   .mark-row{display:flex;gap:18px;flex-wrap:wrap;}
   .mark-row .logo-card{flex:1;min-width:200px;}
+
+  .facts{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;margin:0;padding:0;list-style:none;}
+  @media(max-width:720px){.facts{grid-template-columns:1fr;}}
+  .facts li{font-size:13.5px;color:#333;padding-left:14px;position:relative;}
+  .facts li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;background:var(--terracotta);border-radius:50%;}
 
   .dd{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px;}
   @media(max-width:720px){.dd{grid-template-columns:1fr;}}
@@ -70,20 +76,36 @@
   .col .nm{font-size:13px;font-weight:700;}
   .col .hex{font-size:12px;color:var(--muted);font-family:ui-monospace,Menlo,Consolas,monospace;}
   .col .use{font-size:11.5px;color:var(--muted);margin-top:3px;}
+  .ratio{display:flex;height:30px;border-radius:5px;overflow:hidden;margin:14px 0 6px;border:1px solid var(--rule);}
+  .ratio span{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;letter-spacing:.04em;}
 
   .spec{border-top:1px solid var(--rule);padding:18px 0;}
   .spec:first-of-type{border-top:0;}
   .spec .label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;}
-  .spec .demo-serif{font-family:var(--serif);font-weight:400;line-height:1.1;margin:8px 0 4px;}
+  .spec .demo-serif{font-family:var(--serif);font-weight:400;line-height:1.12;margin:8px 0 4px;}
   .spec .demo-sans{font-family:var(--sans);}
 
-  .voice{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-  @media(max-width:720px){.voice{grid-template-columns:1fr;}}
-  table.say{width:100%;border-collapse:collapse;margin-top:6px;font-size:13.5px;}
-  table.say td{padding:9px 12px;border:1px solid var(--rule);vertical-align:top;}
-  table.say tr td:first-child{background:var(--bone);width:46%;}
+  .principles{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px;}
+  @media(max-width:720px){.principles{grid-template-columns:1fr;}}
+  .pr{border:1px solid var(--rule);border-radius:6px;padding:16px 18px;background:var(--bone);}
+  .pr .n{font-family:var(--serif);font-size:22px;color:var(--terracotta);line-height:1;}
+  .pr h4{margin:6px 0 6px;font-size:15px;font-family:var(--serif);font-weight:400;}
+  .pr p{margin:0;font-size:13px;color:#3a3a3a;}
+
+  table.say{width:100%;border-collapse:collapse;margin-top:14px;font-size:13.5px;}
+  table.say td{padding:10px 12px;border:1px solid var(--rule);vertical-align:top;}
+  table.say tr td:first-child{background:var(--bone);width:50%;}
   .say .x{color:#9c3b1f;font-weight:700;}
   .say .ok{color:var(--cypress);font-weight:700;}
+
+  .apps{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:6px;}
+  @media(max-width:720px){.apps{grid-template-columns:1fr;}}
+  .app{border:1px solid var(--rule);border-radius:6px;padding:20px 22px;}
+  .app h4{margin:0 0 8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;}
+  .app p{margin:0;font-size:13.5px;color:#333;}
+  .sig{font-family:var(--serif);line-height:1.45;font-size:14px;margin-top:4px;}
+  .sig .role{font-family:var(--sans);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;}
+  .sig .tag{font-size:12px;color:var(--muted);}
 
   .footer{margin-top:56px;text-align:center;color:var(--muted);font-size:12.5px;line-height:1.8;}
   .footer a{color:var(--muted);}
@@ -95,25 +117,27 @@
 <div class="wrap">
 
   <div class="masthead frame"><span class="fc"></span>
-    <p class="eyebrow">Est. 2026 · Boca Raton, FL</p>
+    <p class="eyebrow">Brand Guidelines · Volume 02 · Est. 2026 · Boca Raton, FL</p>
     <h1>The Headshot Club<br>Brand Guidelines</h1>
-    <p>The single reference for how the club looks, sounds, and shows up. Logos, color, type, voice, and the rules that keep every touchpoint feeling like one studio.</p>
+    <p>The single reference for how the club looks, sounds, and shows up. Logos, color, type, voice, and the rules that keep every touchpoint feeling like one studio. A living document, refined as the house learns itself.</p>
   </div>
 
+  <!-- 01 POSITIONING -->
   <div class="sec">
-    <p class="eyebrow">01 — The essence</p>
+    <p class="eyebrow">01 — Positioning</p>
     <h2>A new lens on the professional portrait.</h2>
     <p class="lede">The Headshot Club is a photographer collective in Boca Raton producing editorial grade headshots for the faces that earn their living on screen: actors, realtors, lawyers, founders, and executives across South Florida. The work is senior led, unhurried, and built for where the portrait actually lives.</p>
-    <div class="sub">What the club is</div>
-    <p class="lede" style="margin-bottom:6px;">A collective, not a single chair. One standard of quality whoever is behind the lens. Editorial in craft, calm in delivery, professional in tone. By appointment only.</p>
+    <div class="sub">What makes the club different</div>
+    <p class="lede" style="margin-bottom:6px;">Not a studio in the traditional sense. A membership, a roster of photographers, and a standard of craft that travels with the name. Every photographer shoots to the same house style, from the same room, so the work looks like one family of images whether you sit for session 001 or session 4,001. Clients don't book a name. They book the house.</p>
     <div class="sub">What the club is not</div>
     <p class="lede" style="margin:0;">Not a volume mill, not a quick snap, not loud or salesy. The club never centers any one photographer by name in public facing material; the actor is always the club or the collective.</p>
   </div>
 
+  <!-- 02 THE MARK -->
   <div class="sec">
-    <p class="eyebrow">02 — The logo</p>
-    <h2>One lockup. One mark.</h2>
-    <p class="lede">The horizontal lockup is the primary identity. The compact <em>hc.</em> mark stands in where space is tight, like avatars, favicons, and corners. Each comes in a version for light backgrounds and one for dark. Match the version to the background.</p>
+    <p class="eyebrow">02 — The mark</p>
+    <h2>Typography is the identity.</h2>
+    <p class="lede">The brand leads with the wordmark. No circle, no seal, no badge. The typography does the work, framed by corner brackets that reference photography crop marks. The italicized final word with a <em>terracotta period</em> is the signature move, and it carries across every application.</p>
 
     <div class="sub">Primary lockup</div>
     <div class="logo-grid">
@@ -240,7 +264,7 @@
 </svg><p class="logo-cap" style="color:var(--linen)">On Ink &amp; dark backgrounds</p></div></div>
     </div>
 
-    <div class="sub">The mark</div>
+    <div class="sub">The compact monogram</div>
     <div class="mark-row">
       <div class="logo-card onlight mark"><div><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 510.52 505.49">
   
@@ -276,45 +300,74 @@
 </svg><p class="logo-cap" style="color:var(--bone)">Favicon tile</p></div></div>
     </div>
 
+    <div class="sub">One mark, three lockups</div>
+    <ul class="facts">
+      <li><b>Stacked primary</b> — the hero lockup, for large and feature placements.</li>
+      <li><b>Horizontal lockup</b> — site headers, signature blocks, footers.</li>
+      <li><b>Compact monogram (hc.)</b> — favicons, avatars, watermarks, tight spaces.</li>
+      <li><b>Terracotta variant</b> — "club" set entirely in terracotta. Use sparingly, for editorial features or a single hero. Ink stays the everyday default.</li>
+    </ul>
+
+    <div class="sub">Construction &amp; clear space</div>
+    <ul class="facts">
+      <li>Corner bracket arms are 12px at the primary size and scale proportionally.</li>
+      <li>The frame sits 12 to 14px from the wordmark on all four sides.</li>
+      <li>Bracket stroke stays hairline: roughly 0.8px to 2px, never heavy.</li>
+      <li>Clear space equals the height of one wordmark line (the cap height of the "h").</li>
+      <li>Minimum size: 160px wide on screen, 28mm in print. Smaller than that, use the monogram.</li>
+      <li>On dark, the mark reverses to bone. The terracotta period stays terracotta, never bone or white.</li>
+    </ul>
+
+    <div class="sub">Endorsement lockup</div>
+    <p class="note">A single lockup carries "Powered by MLP Studios" to declare the relationship to the parent company. It appears only in formal contexts: website footer, invoices, business card reverse, formal correspondence. Never in site headers, on social avatars, or on promotional surfaces. It sits below the tagline, separated by a hairline rule, smaller and more tracked so the hierarchy reads brand first, tagline second, parent attribution third and quietest.</p>
+
     <div class="sub">Usage rules</div>
     <div class="dd">
       <div class="dd-col do">
         <h4><span class="badge y">✓</span> Do</h4>
         <ul>
           <li>Use the light background version on Bone and light surfaces; use the dark version on Ink, charcoal, or photography.</li>
-          <li>Keep clear space around the lockup equal to the height of the <em>hc.</em> mark on every side.</li>
-          <li>Hold the lockup to a minimum width of roughly 120px on screen so the wordmark stays legible.</li>
-          <li>Use the compact mark when the full lockup would be too small or too tight.</li>
-          <li>Place the logo on areas of calm, even contrast.</li>
+          <li>Hold the full clear space, and keep the lockup above its minimum size.</li>
+          <li>Keep the terracotta period intact and terracotta in every version.</li>
+          <li>Use the monogram when the full lockup would be too small or too tight.</li>
         </ul>
       </div>
       <div class="dd-col dont">
         <h4><span class="badge n">✕</span> Don't</h4>
         <ul>
-          <li>Recolor the logo or swap the terracotta accent for another color.</li>
+          <li>Recolor the logo or change the terracotta accent.</li>
           <li>Stretch, condense, rotate, or distort the proportions.</li>
           <li>Add drop shadows, glows, outlines, or other effects.</li>
-          <li>Rebuild or rearrange the lockup, or set the name in a different typeface.</li>
-          <li>Place the logo on a busy photo or a low contrast color where it disappears.</li>
+          <li>Rebuild the lockup, or place it on a busy or low contrast background.</li>
         </ul>
       </div>
     </div>
   </div>
 
+  <!-- 03 COLOR -->
   <div class="sec">
     <p class="eyebrow">03 — Color</p>
-    <h2>A quiet, earthy palette.</h2>
-    <p class="lede">Ink and Bone carry most of the work. Terracotta is the single accent, used sparingly for emphasis and links. Cypress is a deep secondary. The studio background tones extend the palette for set design.</p>
+    <h2>Warm neutrals, one accent.</h2>
+    <p class="lede">The palette is small on purpose. Ink and Bone carry almost everything. Terracotta is the single accent, used sparingly: the period, a single rule, a signature detail. Cypress and Linen support. The studio background tones extend the palette for set design.</p>
 
     <div class="sub">Core palette</div>
     <div class="colors">
-      <div class="col"><div class="chip" style="background:#1A1A1A"></div><div class="meta"><div class="nm">Ink</div><div class="hex">#1A1A1A</div><div class="use">Primary text, dark backgrounds</div></div></div>
-      <div class="col"><div class="chip" style="background:#F4EFE6"></div><div class="meta"><div class="nm">Bone</div><div class="hex">#F4EFE6</div><div class="use">Primary background, reversed text</div></div></div>
-      <div class="col"><div class="chip" style="background:#A8572C"></div><div class="meta"><div class="nm">Terracotta</div><div class="hex">#A8572C</div><div class="use">The accent. Emphasis, links, italics</div></div></div>
-      <div class="col"><div class="chip" style="background:#3D5447"></div><div class="meta"><div class="nm">Cypress</div><div class="hex">#3D5447</div><div class="use">Deep secondary accent</div></div></div>
-      <div class="col"><div class="chip" style="background:#C9C3B5"></div><div class="meta"><div class="nm">Linen</div><div class="hex">#C9C3B5</div><div class="use">Muted text on dark, soft fills</div></div></div>
+      <div class="col"><div class="chip" style="background:#1A1A1A"></div><div class="meta"><div class="nm">Ink</div><div class="hex">#1A1A1A</div><div class="use">All primary text, marks, and lines</div></div></div>
+      <div class="col"><div class="chip" style="background:#F4EFE6"></div><div class="meta"><div class="nm">Bone</div><div class="hex">#F4EFE6</div><div class="use">The default background. Not white, ever</div></div></div>
+      <div class="col"><div class="chip" style="background:#A8572C"></div><div class="meta"><div class="nm">Terracotta</div><div class="hex">#A8572C</div><div class="use">Accent only. Never a background or body text</div></div></div>
+      <div class="col"><div class="chip" style="background:#3D5447"></div><div class="meta"><div class="nm">Cypress</div><div class="hex">#3D5447</div><div class="use">Supporting. Secondary surfaces</div></div></div>
+      <div class="col"><div class="chip" style="background:#C9C3B5"></div><div class="meta"><div class="nm">Linen</div><div class="hex">#C9C3B5</div><div class="use">Rules, dividers, muted captions on dark</div></div></div>
       <div class="col"><div class="chip" style="background:#6B6B6B"></div><div class="meta"><div class="nm">Muted</div><div class="hex">#6B6B6B</div><div class="use">Secondary text, captions</div></div></div>
     </div>
+
+    <div class="sub">Usage ratio</div>
+    <div class="ratio">
+      <span style="background:#F4EFE6;color:#1A1A1A;flex:70">70% Bone</span>
+      <span style="background:#1A1A1A;color:#F4EFE6;flex:25">25% Ink</span>
+      <span style="background:#A8572C;color:#F4EFE6;flex:3">3%</span>
+      <span style="background:#3D5447;color:#F4EFE6;flex:2">2%</span>
+    </div>
+    <p class="note" style="margin:0;">Aim for roughly 70% Bone, 25% Ink, 3% Terracotta, 2% everything else. If terracotta starts doing more work than that, pull it back.</p>
 
     <div class="sub">Studio background tones</div>
     <div class="colors">
@@ -324,78 +377,89 @@
     </div>
   </div>
 
+  <!-- 04 TYPOGRAPHY -->
   <div class="sec">
     <p class="eyebrow">04 — Typography</p>
-    <h2>Serif for voice. Sans for clarity.</h2>
-    <p class="lede">Headlines are set in a serif, Georgia on the web, with italics in terracotta for emphasis. Everything functional, labels, body, and UI, is a clean sans. Eyebrows are uppercase with wide letter spacing.</p>
+    <h2>Georgia, in two voices.</h2>
+    <p class="lede">Georgia carries the brand. Its roman is structural, for headlines and body. Its italic is expressive, for final words, taglines, and anything meant to feel slightly hand turned. A system sans handles labels, captions, and utility text, never editorial content. On the web Georgia is the default; in Canva use Playfair Display or DM Serif Display, with Helvetica or Archivo for labels.</p>
 
     <div class="spec">
-      <div class="label">Display serif · Georgia (web). Canva alternative: Playfair Display or DM Serif Display</div>
-      <div class="demo-serif" style="font-size:40px;">Portraits that <em>work</em>.</div>
-      <div class="demo-sans" style="font-size:13px;color:var(--muted)">Regular weight, never bold. Italics in terracotta for emphasis.</div>
+      <div class="label">Display · Georgia roman (structural)</div>
+      <div class="demo-serif" style="font-size:38px;">An image that makes sense on LinkedIn.</div>
     </div>
     <div class="spec">
-      <div class="label">Eyebrow · sans, uppercase, letter spacing ~220</div>
-      <div class="demo-sans" style="font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;margin-top:8px;">Est. 2026 · Boca Raton, FL</div>
+      <div class="label">Display · Georgia italic (expressive)</div>
+      <div class="demo-serif" style="font-size:30px;font-style:italic;">Portraits that <em>work</em>.</div>
     </div>
     <div class="spec">
-      <div class="label">Body &amp; UI · system sans (Helvetica / Archivo in Canva)</div>
-      <div class="demo-sans" style="font-size:15px;margin-top:8px;max-width:60ch;">Editorial grade headshots, delivered in a timely manner, ready for actors, realtors, lawyers, and any face that earns its living on screen.</div>
+      <div class="label">Body · Georgia roman</div>
+      <div class="demo-serif" style="font-size:16px;line-height:1.5;max-width:62ch;margin-top:8px;">Every photographer on the roster is trained to the same house style, shoots out of the same room, and delivers work that looks like it belongs to one family of images.</div>
     </div>
+    <div class="spec">
+      <div class="label">Label · system sans, tracked uppercase</div>
+      <div class="demo-sans" style="font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;margin-top:8px;">Sessions · Packages · Journal · Book now</div>
+    </div>
+    <div class="sub">The period</div>
+    <p class="note" style="margin:0;">The <em>terracotta period</em> is the signature typographic move. It appears after "club." in the wordmark, after final words in key taglines, and as punctuation in display copy. Never casual, never decorative. It works because it is restrained.</p>
   </div>
 
+  <!-- 05 VOICE -->
   <div class="sec">
     <p class="eyebrow">05 — Voice &amp; tone</p>
     <h2>Editorial, understated, confident.</h2>
-    <p class="lede">The club sounds like a calm expert who has nothing to prove. Warm and professional, never loud or salesy. Short sentences. Plain words. No hyphens where a space will do.</p>
+    <p class="lede">Write like a short film's opening text, not a startup's landing page. The voice is quiet and confident. The work speaks, so the writing doesn't need to. Where a studio shouts about packages, the club underspeaks and lets the images do the arguing. Short sentences. Plain words. No hyphens where a space will do.</p>
 
-    <div class="voice">
-      <div class="dd-col do">
-        <h4><span class="badge y">✓</span> The voice is</h4>
-        <ul>
-          <li>Editorial and quietly confident</li>
-          <li>Warm, polite, and professional</li>
-          <li>Concise. One idea per line</li>
-          <li>Grounded in craft, not hype</li>
-        </ul>
-      </div>
-      <div class="dd-col dont">
-        <h4><span class="badge n">✕</span> The voice is not</h4>
-        <ul>
-          <li>Salesy, urgent, or shouty</li>
-          <li>Jargon heavy or technical</li>
-          <li>Centered on any one photographer by name</li>
-          <li>Padded with filler or exclamation marks</li>
-        </ul>
-      </div>
+    <div class="principles">
+      <div class="pr"><div class="n">01</div><h4>Confident, not loud</h4><p>No exclamation points, no all caps. If a sentence needs a volume boost to land, rewrite the sentence.</p></div>
+      <div class="pr"><div class="n">02</div><h4>Editorial, not corporate</h4><p>Dry, specific, a little dry witty. Never "solutions," never "world class," never "your journey."</p></div>
+      <div class="pr"><div class="n">03</div><h4>Membership, not service</h4><p>Clients are members. Sessions are appointments. The roster is a collective. A year is a membership, not a bundle.</p></div>
+      <div class="pr"><div class="n">04</div><h4>Crafted, not produced</h4><p>Images are made, not "shot." Sessions are directed, not "booked." A headshot is composed, not "captured."</p></div>
+      <div class="pr"><div class="n">05</div><h4>Specificity over superlatives</h4><p>"Two images in two days" beats "fast turnaround." Concrete nouns and honest numbers carry the weight.</p></div>
+      <div class="pr"><div class="n">06</div><h4>The club, never a name</h4><p>Public copy credits the club or the collective as the actor, never any one photographer by name.</p></div>
     </div>
 
-    <div class="sub">Say this, not that</div>
+    <div class="sub">Instead of, we say</div>
     <table class="say">
-      <tr><td><span class="ok">✓</span> "A new lens on the professional portrait."</td><td><span class="x">✕</span> "The BEST headshots in South Florida!!!"</td></tr>
-      <tr><td><span class="ok">✓</span> "Editorial grade headshots, by appointment."</td><td><span class="x">✕</span> "Book now and save big on headshot deals."</td></tr>
-      <tr><td><span class="ok">✓</span> "The club" or "the collective" as the actor.</td><td><span class="x">✕</span> Naming the individual photographer in public copy.</td></tr>
-      <tr><td><span class="ok">✓</span> "Delivered in a timely manner."</td><td><span class="x">✕</span> "Super fast turn-around!!"</td></tr>
+      <tr><td><span class="x">✕</span> "Book your professional headshot today! Our amazing photographers will capture your best side, stunning results guaranteed."</td><td><span class="ok">✓</span> "Sessions by appointment. Two images, edited, delivered in two days."</td></tr>
+      <tr><td><span class="x">✕</span> "Welcome to South Florida's premier headshot studio, where we help you put your best face forward."</td><td><span class="ok">✓</span> "A photographer collective in Boca Raton. We make headshots that work where they need to work."</td></tr>
+      <tr><td><span class="x">✕</span> "Our Premium Package Includes 5 Edited Images, Multiple Outfit Changes, and Complimentary Coffee!"</td><td><span class="ok">✓</span> "The extended session. Five images. Two changes. Ninety minutes."</td></tr>
     </table>
   </div>
 
+  <!-- 06 PHOTOGRAPHY -->
   <div class="sec">
     <p class="eyebrow">06 — Photography &amp; the signature element</p>
     <h2>Editorial light. A viewfinder frame.</h2>
     <p class="lede">Imagery is editorial grade: flattering natural light, real expressions, clean studio grounds from the background palette. Portraits look like the person on their best ordinary day, never a stranger holding still.</p>
-    <div class="sub">The signature mark</div>
-    <p class="lede" style="margin:0;">Thin corner brackets, like a camera viewfinder, frame layouts across social and print. Drawn from the logo, they turn a plain text slide into something unmistakably the club. Keep them thin, in terracotta or bone, with generous margins inside.</p>
+    <div class="sub">The signature frame</div>
+    <p class="note" style="margin:0;">Thin corner brackets, like a camera viewfinder, frame layouts across social and print. Drawn from the logo, they turn a plain text slide into something unmistakably the club. Keep them hairline, in terracotta or bone, with generous margins inside.</p>
   </div>
 
+  <!-- 07 APPLICATIONS -->
+  <div class="sec">
+    <p class="eyebrow">07 — Applications</p>
+    <h2>The brand in use.</h2>
+    <p class="lede">A few common surfaces. References, not rigid templates. The system extends to anything that holds to the rules of color, type, and voice.</p>
+    <div class="apps">
+      <div class="app"><h4>Site header</h4><p>Horizontal lockup left, tracked sans nav right: Sessions · Studio · Journal · Book.</p></div>
+      <div class="app"><h4>Avatar &amp; favicon</h4><p>Compact monogram only, centered. Circle or square avatar, 48px favicon. The lockup is too detailed at these sizes.</p></div>
+      <div class="app"><h4>Image watermark</h4><p>Monogram bottom right at 3% opacity: bone on light frames, ink on dark. Present but almost invisible, a signature not a stamp.</p></div>
+      <div class="app"><h4>Email signature</h4>
+        <div class="sig">Michelle LaCruz<br><span class="role">Founder</span><br>the headshot <em>club.</em><br><span class="tag">A photographer collective · Boca Raton, FL<br>theheadshotclub.co</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
   <div class="footer">
-    <p class="eyebrow" style="color:var(--muted)">The Headshot Club · A photographer collective</p>
+    <p class="eyebrow" style="color:var(--muted)">The Headshot Club · A photographer collective · Powered by MLP Studios</p>
     <div class="pill-row" style="justify-content:center;">
       <span class="pill">Boca Raton, FL</span>
       <span class="pill">By appointment only</span>
       <span class="pill">hola@theheadshotclub.co</span>
       <span class="pill">@theheadshotclub.co</span>
     </div>
-    <p style="margin-top:16px;">Serving Boca Raton, Delray Beach, Fort Lauderdale, West Palm Beach, and greater South Florida.<br>© 2026 The Headshot Club · theheadshotclub.co</p>
+    <p style="margin-top:16px;">Serving Boca Raton, Delray Beach, Fort Lauderdale, West Palm Beach, and greater South Florida.<br>Brand Guidelines, Volume 02 · © 2026 The Headshot Club · theheadshotclub.co</p>
   </div>
 
 </div>
