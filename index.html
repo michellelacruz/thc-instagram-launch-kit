@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>The Headshot Club — Instagram Launch Kit</title>
+<style>
+  :root{
+    --ink:#1A1A1A; --bone:#F4EFE6; --terracotta:#A8572C; --cypress:#3D5447;
+    --linen:#C9C3B5; --rule:#D3D1C7; --muted:#6B6B6B;
+    color-scheme: light;
+    --serif: Georgia,'Times New Roman',Times,serif;
+    --sans: -apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#E7E1D6;color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:48px 28px 96px;}
+
+  /* ---------- top brand header ---------- */
+  .masthead{background:var(--ink);color:var(--bone);border-radius:6px;padding:44px 40px;position:relative;overflow:hidden;}
+  .masthead .eyebrow{color:var(--linen);}
+  .masthead h1{font-family:var(--serif);font-weight:400;font-size:40px;line-height:1.1;margin:14px 0 10px;}
+  .masthead p{color:var(--linen);max-width:620px;margin:0;font-size:15px;}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin:0;}
+
+  /* ---------- quick-start card ---------- */
+  .quickstart{background:var(--bone);border:1px solid var(--rule);border-radius:6px;padding:32px 34px;margin-top:18px;}
+  .quickstart h2{font-family:var(--serif);font-weight:400;font-size:24px;margin:0 0 6px;}
+  .qs-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:20px;}
+  @media(max-width:720px){.qs-grid{grid-template-columns:1fr;}}
+  .qs-block h3{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;}
+  .swatches{display:flex;flex-wrap:wrap;gap:10px;}
+  .sw{display:flex;align-items:center;gap:8px;font-size:12px;}
+  .chip{width:30px;height:30px;border-radius:5px;border:1px solid rgba(0,0,0,.12);}
+  .qs-block ul{margin:0;padding-left:18px;font-size:13.5px;color:#333;}
+  .qs-block li{margin-bottom:7px;}
+  code{background:#fff;border:1px solid var(--rule);border-radius:4px;padding:1px 6px;font-size:12.5px;font-family:ui-monospace,Menlo,Consolas,monospace;}
+
+  /* ---------- section divider ---------- */
+  .phase{margin:60px 0 4px;display:flex;align-items:baseline;gap:16px;}
+  .phase .tag{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;background:var(--terracotta);color:var(--bone);padding:5px 12px;border-radius:3px;}
+  .phase .tag.green{background:var(--cypress);}
+  .phase h2{font-family:var(--serif);font-weight:400;font-size:28px;margin:0;}
+  .phase-note{color:var(--muted);font-size:13.5px;margin:6px 0 0;}
+
+  /* ---------- post card ---------- */
+  .post{background:#fff;border:1px solid var(--rule);border-radius:8px;padding:30px 30px 34px;margin-top:26px;}
+  .post-head{display:flex;align-items:flex-start;gap:14px;border-bottom:1px solid var(--rule);padding-bottom:18px;margin-bottom:22px;}
+  .num{font-family:var(--serif);font-size:30px;line-height:1;color:var(--terracotta);min-width:54px;}
+  .post-head .t h3{font-family:var(--serif);font-weight:400;font-size:21px;margin:0 0 4px;}
+  .post-head .t .goal{font-size:12.5px;color:var(--muted);}
+  .lbl{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:22px 0 12px;}
+
+  /* carousel rail */
+  .rail{display:flex;gap:14px;overflow-x:auto;padding-bottom:8px;}
+  .slide{flex:0 0 auto;width:204px;height:255px;border-radius:5px;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:22px;overflow:hidden;}
+  .slide .si{position:absolute;top:8px;left:10px;font-size:9px;letter-spacing:.14em;opacity:.55;font-weight:700;}
+  .slide .eb{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin-bottom:10px;}
+  .slide .dh{font-family:var(--serif);font-weight:400;font-size:19px;line-height:1.16;}
+  .slide .sub{font-size:10.5px;line-height:1.4;margin-top:9px;}
+  .slide .num-big{font-family:var(--serif);font-size:34px;line-height:1;margin-bottom:8px;}
+  .slide .handle{position:absolute;bottom:10px;left:0;right:0;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.7;}
+
+  /* themes */
+  .ink{background:var(--ink);color:var(--bone);}
+  .ink .eb{color:var(--terracotta);}
+  .bone{background:var(--bone);color:var(--ink);}
+  .bone .eb{color:var(--terracotta);}
+  .terra{background:var(--terracotta);color:var(--bone);}
+  .terra .eb{color:var(--bone);}
+  .cyp{background:var(--cypress);color:var(--bone);}
+  .cyp .eb{color:var(--linen);}
+  .photo{background:linear-gradient(135deg,#5b5247,#2c2620);color:var(--bone);}
+  .photo .eb{color:var(--linen);}
+  .photo-tag{position:absolute;bottom:9px;left:0;right:0;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;}
+
+  /* corner-bracket frame motif (the brand signature) */
+  .frame::before,.frame::after,.frame .fc::before,.frame .fc::after{content:"";position:absolute;width:16px;height:16px;border-color:currentColor;border-style:solid;border-width:0;opacity:.85;}
+  .frame::before{top:12px;left:12px;border-top-width:1.5px;border-left-width:1.5px;}
+  .frame::after{top:12px;right:12px;border-top-width:1.5px;border-right-width:1.5px;}
+  .frame .fc::before{bottom:12px;left:12px;border-bottom-width:1.5px;border-left-width:1.5px;}
+  .frame .fc::after{bottom:12px;right:12px;border-bottom-width:1.5px;border-right-width:1.5px;}
+
+  /* story + caption columns */
+  .cols{display:grid;grid-template-columns:175px 1fr;gap:26px;margin-top:26px;align-items:start;}
+  @media(max-width:720px){.cols{grid-template-columns:1fr;}}
+  .story{width:160px;height:284px;border-radius:8px;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;overflow:hidden;}
+  .story .dh{font-family:var(--serif);font-size:18px;line-height:1.18;}
+  .story .eb{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin-bottom:9px;}
+  .story .pill{margin-top:14px;font-size:9px;letter-spacing:.05em;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:5px 11px;}
+  .bone .pill{background:rgba(26,26,26,.06);border-color:rgba(26,26,26,.2);}
+
+  .caption{background:var(--bone);border:1px solid var(--rule);border-radius:6px;padding:18px 20px;}
+  .caption .ch{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 10px;display:flex;justify-content:space-between;align-items:center;}
+  .copybtn{cursor:pointer;border:1px solid var(--ink);background:transparent;color:var(--ink);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:4px 9px;border-radius:3px;}
+  .copybtn:hover{background:var(--ink);color:var(--bone);}
+  .caption pre{white-space:pre-wrap;font-family:var(--sans);font-size:13px;line-height:1.55;margin:0;color:#2a2a2a;}
+  .recipe{font-size:11.5px;color:var(--muted);margin-top:14px;padding-top:12px;border-top:1px dashed var(--rule);}
+  .recipe b{color:#333;}
+  .footer{margin-top:70px;text-align:center;color:var(--muted);font-size:12px;}
+  .footer .eyebrow{color:var(--muted);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===================== MASTHEAD ===================== -->
+  <div class="masthead frame"><span class="fc"></span>
+    <p class="eyebrow">Est. 2026 · Boca Raton, FL · Instagram Kit</p>
+    <h1>The Headshot Club<br>Launch Content Kit</h1>
+    <p>Fourteen ready to build posts — seven to tease the launch, seven to carry it after the doors open. Every slide is written in the club voice and colored in the brand palette. Copy the text straight into Canva and drop your photos in.</p>
+  </div>
+
+  <!-- ===================== QUICK START ===================== -->
+  <div class="quickstart">
+    <h2>Canva quick start</h2>
+    <p style="margin:0;color:#444;font-size:13.5px;">Build two blank designs in Canva: a <b>1080 × 1350 px</b> portrait (4:5) for carousels and a <b>1080 × 1920 px</b> story. Set these brand pieces once, save as a Brand Kit, and reuse for every post below.</p>
+    <div class="qs-grid">
+      <div class="qs-block">
+        <h3>Brand colors (paste the hex)</h3>
+        <div class="swatches">
+          <div class="sw"><span class="chip" style="background:#1A1A1A"></span> Ink · <code>#1A1A1A</code></div>
+          <div class="sw"><span class="chip" style="background:#F4EFE6"></span> Bone · <code>#F4EFE6</code></div>
+          <div class="sw"><span class="chip" style="background:#A8572C"></span> Terracotta · <code>#A8572C</code></div>
+          <div class="sw"><span class="chip" style="background:#3D5447"></span> Cypress · <code>#3D5447</code></div>
+          <div class="sw"><span class="chip" style="background:#C9C3B5"></span> Linen · <code>#C9C3B5</code></div>
+        </div>
+        <h3 style="margin-top:20px;">Type</h3>
+        <ul>
+          <li><b>Headlines:</b> a serif — <code>Georgia</code>, or in Canva use <b>Playfair Display</b> / <b>DM Serif Display</b>. Regular weight, never bold.</li>
+          <li><b>Eyebrow / labels:</b> a clean sans in ALL CAPS with wide letter spacing (220) — <b>Helvetica</b> or <b>Archivo</b>.</li>
+        </ul>
+      </div>
+      <div class="qs-block">
+        <h3>Your logo files</h3>
+        <ul>
+          <li>Upload from <code>brand-dropzone › The Headshot Club Logo › PNG</code> (or the SVG folder for crisp scaling).</li>
+          <li>On <b>dark / ink</b> slides use the <b>light</b> logo. On <b>bone</b> slides use the <b>dark</b> logo.</li>
+          <li>Keep the logo small and in a bottom corner. Let the type lead.</li>
+        </ul>
+        <h3 style="margin-top:20px;">The signature move</h3>
+        <ul>
+          <li>The thin <b>corner brackets</b> framing each slide (like a viewfinder) are pulled from your logo. In Canva: add four thin <code>L</code> shaped lines in the corners, terracotta or bone. This single detail makes a plain text slide read as "the club."</li>
+          <li>Generous margins. One idea per slide. Let it breathe.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== PRE-LAUNCH ===================== -->
+  <div class="phase">
+    <span class="tag">Phase 1 — Pre launch</span>
+    <h2>Build the anticipation</h2>
+  </div>
+  <p class="phase-note">Post these in order over your runway before opening. Tone is quiet and confident — you are not begging for attention, you are letting people lean in. Replace [MONTH] with your date once it is set.</p>
+
+  <!-- P1 -->
+  <div class="post">
+    <div class="post-head"><div class="num">01</div><div class="t"><h3>Something is developing</h3><div class="goal">Goal: first whisper. Plant the name and the feeling, give nothing away.</div></div></div>
+    <div class="lbl">Carousel — 3 slides</div>
+    <div class="rail">
+      <div class="slide ink frame"><span class="fc"></span><span class="si">1 / 3</span><div class="eb">Est. 2026 · Boca Raton</div><div class="dh">Something is developing.</div></div>
+      <div class="slide bone frame"><span class="fc"></span><span class="si">2 / 3</span><div class="dh">A new lens on the professional portrait.</div></div>
+      <div class="slide terra frame"><span class="fc"></span><span class="si">3 / 3</span><div class="dh">The Headshot Club</div><div class="sub">Soon.</div><div class="handle">@theheadshotclub.co</div></div>
+    </div>
+    <div class="cols">
+      <div class="story ink frame"><span class="fc"></span><div class="eb" style="color:var(--terracotta)">Coming soon</div><div class="dh">Something is developing.</div><div class="pill">Add a "Soon" sticker</div></div>
+      <div class="caption">
+        <div class="ch">Caption <button class="copybtn" onclick="cp(this)">Copy</button></div>
+        <pre>A new lens on the professional portrait is coming to Boca Raton.
+
+Editorial grade headshots, made for the faces that earn their living on screen. The club is quietly lining up the lights.
+
+Follow along. The doors open soon.
+
+#theheadshotclub #bocaratonheadshots #southfloridaphotographer #professionalheadshots #editorialportraits</pre>
+        <div class="recipe"><b>Build:</b> Slide 1 Ink bg, light logo bottom center. Slide 2 Bone bg. Slide 3 Terracotta bg. Corner brackets on all three. Serif headlines, centered.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- P2 -->
+  <div class="post">
+    <div class="post-head"><div class="num">02</div><div class="t"><h3>The manifesto</h3><div class="goal">Goal: state the point of view. Why the club exists, in four lines.</div></div></div>
+    <div class="lbl">Carousel — 4 slides</div>
+    <div class="rail">
+      <div class="slide bone frame"><span class="fc"></span><span class="si">1 / 4</span><div class="dh">Portraits that work where they need to work.</div></div>
+      <div class="slide ink frame"><span class="fc"></span><span class="si">2 / 4</span><div class="dh">Most headshots settle.<br>The club does not.</div></div>
+      <div class="slide bone frame"><span class="fc"></span><span class="si">3 / 4</span><div class="dh">Editorial grade. Delivered in a timely manner. Ready for the room you walk into.</div></div>
+      <div class="slide terra frame"><span class="fc"></span><span class="si">4 / 4</span><div class="eb">A photographer collective</div><div class="dh">The Headshot Club</div><div class="handle">Boca Raton · @theheadshotclub.co</div></div>
+    </div>
+    <div class="cols">
+      <div class="story bone frame"><span class="fc"></span><div class="dh">Portraits that work where they need to work.</div><div class="pill">Swipe up soon</div></div>
+      <div class="caption">
+        <div class="ch">Caption <button class="copybtn" onclick="cp(this)">Copy</button></div>
+        <pre>A headshot has one job: to work where it lives. The casting portal. The about page. The first search result of your name.
+
+The club exists to make portraits that do that job, and look like you on your best ordinary day.
+
+A photographer collective, opening soon in Boca Raton.
+
+#theheadshotclub #bocaratonheadshots #linkedinheadshots #actorheadshots #personalbranding</pre>
+        <div class="recipe"><b>Build:</b> alternate Bone and Ink backgrounds. Keep one thought per slide, large serif, lots of margin.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- P3 -->
+  <div class="post">
+    <div class="post-head"><div class="num">03</div><div class="t"><h3>Who it is for</h3><div class="goal">Goal: let the right people see themselves. Audience callout.</div></div></div>
+    <div class="lbl">Carousel — 5 slides</div>
+    <div class="rail">
+      <div class="slide ink frame"><span class="fc"></span><span class="si">1 / 5</span><div class="dh">Who is The Headshot Club for?</div></div>
+      <div class="slide bone frame"><span class="fc"></span><span class="si">2 / 5</span><div class="dh">Actors who need the shot that earns the callback.</div></div>
+      <div class="slide bone frame"><span class="fc"></span><span class="si">3 / 5</span><div class="dh">Realtors and lawyers whose face is the first handshake.</div></div>
+      <div class="slide bone frame"><span class="fc"></span><span class="si">4 / 5</span><div class="dh">Executives and founders building a public profile.</div></div>
+      <div class="slide terra frame"><span class="fc"></span><span class="si">5 / 5</span><div class="dh">Any face that earns its living on screen.</div><div class="handle">@theheadshotclub.co</div></div>
+    </div>
+    <div class="cols">
+      <div class="story terra frame"><span class="fc"></span><div class="eb">For</div><div class="dh">Any face that earns its living on screen.</div></div>
+      <div class="caption">
+        <div class="ch">Caption <button class="copybtn" onclick="cp(this)">Copy</button></div>
+        <pre>Actors. Realtors. Lawyers. Founders. Anyone whose face does part of the work.
+
+If your portrait is the first thing a stranger meets, it should be carrying its weight. The club is opening soon to make sure it does.
+
+Tap follow. Tell the one person who has been meaning to update theirs.
+
+#theheadshotclub #bocaratonheadshots #realtorheadshots #attorneyheadshots #executiveportraits</pre>
+        <div class="recipe"><b>Build:</b> slides 2–4 share one layout so the audience list feels like a set. Swap the line, keep everything else fixed.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- P4 -->
+  <div class="post">
+    <div class="post-head"><div class="num">04</div><div class="t"><h3>Not a studio. A collective.</h3><div class="goal">Goal: explain the model. The differentiator in three slides.</div></div></div>
+    <div class="lbl">Carousel — 3 slides</div>
+    <div class="rail">
+      <div class="slide cyp frame"><span class="fc"></span><span class="si">1 / 3</span><div class="dh">Not a studio.<br>A collective.</div></div>
+      <div class="slide bone frame"><span class="fc"></span><span class="si">2 / 3</span><div class="dh">A group of photographers. One standard.</div></div>
+      <div class="slide ink frame"><span class="fc"></span><span class="si">3 / 3</span><div class="dh">Editorial grade headshots, made in Boca Raton.</div><div class="handle">@theheadshotclub.co</div></div>
+    </div>
+    <div class="cols">
+      <div class="story cyp frame"><span class="fc"></span><div class="eb">The model</div><div class="dh">A collective. One standard.</div></div>
+      <div class="caption">
+        <div class="ch">Caption <button class="copybtn" onclick="cp(this)">Copy</button></div>
+        <pre>The Headshot Club is a collective, not a single chair. A group of photographers holding to one standard, so the quality is the same whoever is behind the lens.
+
+That is how you get editorial grade work, on a real schedule, without the wait.
+
+Opening soon in Boca Raton.
+
+#theheadshotclub #photographycollective #bocaratonphotographer #editorialheadshots #southflorida</pre>
+        <div class="recipe"><b>Build:</b> Cypress green is the accent here — use it sparingly so it stays special. Slide 1 Cypress, then Bone, then Ink.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- P5 -->
+  <div class="post">
+    <div class="post-head"><div class="num">05</div><div class="t"><h3>What makes a headshot work</h3><div class="goal">Goal: give value, show expertise. Saveable education post.</div></div></div>
+    <div class="lbl">Carousel — 4 slides</div>
+    <div class="rail">
+      <div class="slide ink frame"><span class="fc"></span><span class="si">1 / 4</span><div class="dh">What makes a headshot actually work?</div></div>
+      <div class="slide bone frame"><span class="fc"></span><span class="si">2 / 4</span><div class="eb">01</div><div class="dh">Light that flatters, never flattens.</div></div>
+      <div class="slide bone frame"><span class="fc"></span><span class="si">3 / 4</span><div class="eb">02</div><div class="dh">An expression that looks like you on a good day.</div></div>
+      <div class="slide bone frame"><span class="fc"></span><span class="si">4 / 4</span><div class="eb">03</div><div class="dh">A crop built for where it lives.</div><div class="handle">@theheadshotclub.co</div></div>
+    </div>
+    <div class="cols">
+      <div class="story ink frame"><span class="fc"></span><div class="eb" style="color:var(--terracotta)">Save this</div><div class="dh">What makes a headshot actually work?</div></div>
+      <div class="caption">
+        <div class="ch">Caption <button class="copybtn" onclick="cp(this)">Copy</button></div>
+        <pre>Three things separate a headshot that works from one that just exists.
+
+01 Light that flatters, never flattens.
+02 An expression that looks like you on a good day, not a stranger holding still.
+03 A crop and finish built for where it lives, whether that is LinkedIn, a casting portal, or your about page.
+
+The club brings all three to every session. Opening soon.
+
+Save this for when you book yours.
+
+#theheadshotclub #headshottips #bocaratonheadshots #professionalphotography #personalbranding</pre>
+        <div class="recipe"><b>Build:</b> number slides 01–03 with the small terracotta eyebrow. Consistent layout makes it read as a numbered list.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- P6 -->
+  <div class="post">
+    <div class="post-head"><div class="num">06</div><div class="t"><h3>The doors open soon</h3><div class="goal">Goal: create urgency. Countdown and scarcity.</div></div></div>
+    <div class="lbl">Carousel — 3 slides</div>
+    <div class="rail">
+      <div class="slide terra frame"><span class="fc"></span><span class="si">1 / 3</span><div class="eb">Mark the date</div><div class="dh">The doors open [MONTH].</div></div>
+      <div class="slide bone frame"><span class="fc"></span><span class="si">2 / 3</span><div class="dh">Sessions by appointment. Spaces are limited.</div></div>
+      <div class="slide ink frame"><span class="fc"></span><span class="si">3 / 3</span><div class="dh">Be the first to know.</div><div class="sub">Link in bio.</div><div class="handle">@theheadshotclub.co</div></div>
+    </div>
+    <div class="cols">
+      <div class="story terra frame"><span class="fc"></span><div class="eb">Opening</div><div class="dh">The doors open [MONTH].</div><div class="pill">Add a countdown sticker</div></div>
+      <div class="caption">
+        <div class="ch">Caption <button class="copybtn" onclick="cp(this)">Copy</button></div>
+        <pre>It is almost time. The Headshot Club opens [MONTH] in Boca Raton.
+
+Sessions are by appointment and the first dates are limited. Be first in line when booking opens — the link is in our bio.
+
+#theheadshotclub #bocaratonheadshots #comingsoon #southfloridaphotographer #openingsoon</pre>
+        <div class="recipe"><b>Build:</b> use the Story with Instagram's <b>Countdown sticker</b> set to your launch date so followers are reminded automatically.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- P7 -->
+  <div class="post">
+    <div class="post-head"><div class="num">07</div><div class="t"><h3>First access</h3><div class="goal">Goal: capture emails before launch. Build the founding list.</div></div></div>
+    <div class="lbl">Carousel — 3 slides</div>
+    <div class="rail">
+      <div class="slide ink frame"><span class="fc"></span><span class="si">1 / 3</span><div class="dh">Want first access?</div></div>
+      <div class="slide bone frame"><span class="fc"></span><span class="si">2 / 3</span><div class="dh">Join the list before the club opens.</div></div>
+      <div class="slide terra frame"><span class="fc"></span><span class="si">3 / 3</span><div class="dh">First to know. First in the chair.</div><div class="sub">theheadshotclub.co</div></div>
+    </div>
+    <div class="cols">
+      <div class="story bone frame"><span class="fc"></span><div class="eb">Be first</div><div class="dh">Join the list before we open.</div><div class="pill">Add a Link sticker</div></div>
+      <div class="caption">
+        <div class="ch">Caption <button class="copybtn" onclick="cp(this)">Copy</button></div>
+        <pre>The first sessions will go fast.
+
+Join the list at theheadshotclub.co and you will be the first to hear when booking opens — before it goes public. First to know, first in the chair.
+
+Link in bio.
+
+#theheadshotclub #bocaratonheadshots #waitlist #professionalheadshots #southflorida</pre>
+        <div class="recipe"><b>Build:</b> on the Story, attach a <b>Link sticker</b> to theheadshotclub.co so people can sign up in one tap.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== POST-LAUNCH ===================== -->
+  <div class="phase">
+    <span class="tag green">Phase 2 — Post launch</span>
+    <h2>Carry the momentum</h2>
+  </div>
+  <p class="phase-note">Post these once booking is live. The job shifts from "lean in" to "book now." Slides marked PHOTO are where your real headshots do the talking — drop them in full bleed and keep text minimal.</p>
+
+  <!-- L1 -->
+  <div class="post">
+    <div class="post-head"><div class="num">08</div><div class="t"><h3>We are open</h3><div class="goal">Goal: the announcement. Make it feel like an event.</div></div></div>
+    <div class="lbl">Carousel — 3 slides</div>
+    <div class="rail">
+      <div class="slide ink frame"><span class="fc"></span><span class="si">1 / 3</span><div class="eb">Est. 2026 · Boca Raton</div><div class="dh">We are open.</div></div>
+      <div class="slide bone frame"><span class="fc"></span><span class="si">2 / 3</span><div class="dh">The Headshot Club is now booking.</div></div>
+      <div class="slide terra frame"><span class="fc"></span><span class="si">3 / 3</span><div class="dh">Book at theheadshotclub.co</div><div class="sub">By appointment.</div><div class="handle">@theheadshotclub.co</div></div>
+    </div>
+    <div class="cols">
+      <div class="story ink frame"><span class="fc"></span><div class="eb" style="color:var(--terracotta)">Now booking</div><div class="dh">We are open.</div><div class="pill">Add a Link sticker</div></div>
+      <div class="caption">
+        <div class="ch">Caption <button class="copybtn" onclick="cp(this)">Copy</button></div>
+        <pre>The doors are open.
+
+The Headshot Club is now booking in Boca Raton — editorial grade headshots, by appointment, for the faces that earn their living on screen.
+
+Book your session at theheadshotclub.co. Link in bio.
+
+#theheadshotclub #bocaratonheadshots #nowbooking #professionalheadshots #southfloridaphotographer</pre>
+        <div class="recipe"><b>Build:</b> Slide 1 Ink with light logo. This is your pinned post for launch week. Add the Link sticker to the Story.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- L2 -->
+  <div class="post">
+    <div class="post-head"><div class="num">09</div><div class="t"><h3>How it works</h3><div class="goal">Goal: remove friction. Show how simple booking is.</div></div></div>
+    <div class="lbl">Carousel — 4 slides</div>
+    <div class="rail">
+      <div class="slide ink frame"><span class="fc"></span><span class="si">1 / 4</span><div class="dh">How it works.</div></div>
+      <div class="slide bone frame"><span class="fc"></span><span class="si">2 / 4</span><div class="num-big" style="color:var(--terracotta)">01</div><div class="dh">Book your session online.</div></div>
+      <div class="slide bone frame"><span class="fc"></span><span class="si">3 / 4</span><div class="num-big" style="color:var(--terracotta)">02</div><div class="dh">Sit for a guided, unhurried shoot.</div></div>
+      <div class="slide terra frame"><span class="fc"></span><span class="si">4 / 4</span><div class="num-big">03</div><div class="dh">Receive your retouched headshots, ready to use.</div></div>
+    </div>
+    <div class="cols">
+      <div class="story bone frame"><span class="fc"></span><div class="eb">Three steps</div><div class="dh">Book. Sit. Receive.</div></div>
+      <div class="caption">
+        <div class="ch">Caption <button class="copybtn" onclick="cp(this)">Copy</button></div>
+        <pre>Getting a headshot that works should be the easy part.
+
+01 Book your session online in a couple of minutes.
+02 Sit for a guided, unhurried shoot. The club handles the direction.
+03 Receive your retouched headshots, ready for wherever they need to go.
+
+Start at theheadshotclub.co. Link in bio.
+
+#theheadshotclub #bocaratonheadshots #howitworks #headshotsession #personalbranding</pre>
+        <div class="recipe"><b>Build:</b> big serif numbers 01–03 in terracotta. Reuse the exact layout per step so it reads as a clean sequence.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- L3 -->
+  <div class="post">
+    <div class="post-head"><div class="num">10</div><div class="t"><h3>What you can book</h3><div class="goal">Goal: show the range of sessions. Help people self select.</div></div></div>
+    <div class="lbl">Carousel — 5 slides</div>
+    <div class="rail">
+      <div class="slide cyp frame"><span class="fc"></span><span class="si">1 / 5</span><div class="dh">What can you book?</div></div>
+      <div class="slide bone frame"><span class="fc"></span><span class="si">2 / 5</span><div class="eb">Session</div><div class="dh">The LinkedIn refresh.</div></div>
+      <div class="slide bone frame"><span class="fc"></span><span class="si">3 / 5</span><div class="eb">Session</div><div class="dh">The actor's set.</div></div>
+      <div class="slide bone frame"><span class="fc"></span><span class="si">4 / 5</span><div class="eb">Session</div><div class="dh">The branding session.</div></div>
+      <div class="slide terra frame"><span class="fc"></span><span class="si">5 / 5</span><div class="eb">Session</div><div class="dh">The team day, on location.</div><div class="handle">theheadshotclub.co</div></div>
+    </div>
+    <div class="cols">
+      <div class="story cyp frame"><span class="fc"></span><div class="eb">Choose yours</div><div class="dh">From LinkedIn to the full set.</div></div>
+      <div class="caption">
+        <div class="ch">Caption <button class="copybtn" onclick="cp(this)">Copy</button></div>
+        <pre>One headshot or a full set — the club has a session for it.
+
+The LinkedIn refresh. The actor's set. The branding session. The team day on location.
+
+Whatever your face needs to do, there is a session built for it. See them all at theheadshotclub.co.
+
+#theheadshotclub #bocaratonheadshots #linkedinheadshots #actorheadshots #teamheadshots</pre>
+        <div class="recipe"><b>Build:</b> slides 2–4 share a layout, slide 5 switches to terracotta to close. Add a real photo behind any session slide if you have one.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- L4 -->
+  <div class="post">
+    <div class="post-head"><div class="num">11</div><div class="t"><h3>The difference</h3><div class="goal">Goal: show, do not tell. Selfie vs session contrast.</div></div></div>
+    <div class="lbl">Carousel — 4 slides · slides 2 &amp; 3 are your photos</div>
+    <div class="rail">
+      <div class="slide ink frame"><span class="fc"></span><span class="si">1 / 4</span><div class="dh">The difference a real headshot makes.</div></div>
+      <div class="slide photo frame"><span class="fc"></span><span class="si">2 / 4</span><div class="eb">Before</div><div class="dh">A phone selfie.</div><div class="photo-tag">Drop in a casual photo</div></div>
+      <div class="slide photo frame"><span class="fc"></span><span class="si">3 / 4</span><div class="eb">After</div><div class="dh">An hour with the club.</div><div class="photo-tag">Drop in the finished headshot</div></div>
+      <div class="slide terra frame"><span class="fc"></span><span class="si">4 / 4</span><div class="dh">Same face. Different first impression.</div><div class="handle">theheadshotclub.co</div></div>
+    </div>
+    <div class="cols">
+      <div class="story photo frame"><span class="fc"></span><div class="eb">Before / after</div><div class="dh">Same face. New first impression.</div><div class="photo-tag">Use a split image</div></div>
+      <div class="caption">
+        <div class="ch">Caption <button class="copybtn" onclick="cp(this)">Copy</button></div>
+        <pre>Same person. Same face. One hour apart.
+
+The difference is light, direction, and a finish built for where the photo lives. That is the whole point of the club.
+
+Ready for your after? Book at theheadshotclub.co.
+
+#theheadshotclub #beforeandafter #bocaratonheadshots #headshotphotographer #personalbranding</pre>
+        <div class="recipe"><b>Build:</b> slides 2 and 3 are full bleed photos with a small label top left. Keep the crop and zoom identical so only the quality changes.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- L5 -->
+  <div class="post">
+    <div class="post-head"><div class="num">12</div><div class="t"><h3>In their words</h3><div class="goal">Goal: social proof. A clean client quote.</div></div></div>
+    <div class="lbl">Carousel — 2 slides · pair with a client photo</div>
+    <div class="rail">
+      <div class="slide bone frame"><span class="fc"></span><span class="si">1 / 2</span><div class="eb">In their words</div><div class="dh">"I finally have a photo that actually looks like me."</div><div class="sub" style="margin-top:14px;">— [First name], [role]</div></div>
+      <div class="slide ink frame"><span class="fc"></span><span class="si">2 / 2</span><div class="dh">More like this at theheadshotclub.co</div><div class="handle">@theheadshotclub.co</div></div>
+    </div>
+    <div class="cols">
+      <div class="story bone frame"><span class="fc"></span><div class="eb">In their words</div><div class="dh">"A photo that finally looks like me."</div></div>
+      <div class="caption">
+        <div class="ch">Caption <button class="copybtn" onclick="cp(this)">Copy</button></div>
+        <pre>The best review is a face that finally feels like the real thing.
+
+"I finally have a photo that actually looks like me." — [First name], [role]
+
+Your turn at theheadshotclub.co. Link in bio.
+
+#theheadshotclub #clientlove #bocaratonheadshots #testimonial #professionalheadshots</pre>
+        <div class="recipe"><b>Build:</b> set the quote in serif on Bone, with the client's headshot full bleed on the facing slide. Swap in a real quote and name before posting.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- L6 -->
+  <div class="post">
+    <div class="post-head"><div class="num">13</div><div class="t"><h3>Make it count</h3><div class="goal">Goal: direct CTA. The clean ask to book.</div></div></div>
+    <div class="lbl">Carousel — 3 slides</div>
+    <div class="rail">
+      <div class="slide ink frame"><span class="fc"></span><span class="si">1 / 3</span><div class="dh">Your face is your first impression.</div></div>
+      <div class="slide bone frame"><span class="fc"></span><span class="si">2 / 3</span><div class="dh">Make it count.</div></div>
+      <div class="slide terra frame"><span class="fc"></span><span class="si">3 / 3</span><div class="dh">Book your session.</div><div class="sub">theheadshotclub.co</div><div class="handle">@theheadshotclub.co</div></div>
+    </div>
+    <div class="cols">
+      <div class="story terra frame"><span class="fc"></span><div class="eb">Book now</div><div class="dh">Make your first impression count.</div><div class="pill">Add a Link sticker</div></div>
+      <div class="caption">
+        <div class="ch">Caption <button class="copybtn" onclick="cp(this)">Copy</button></div>
+        <pre>Your face is the first thing a stranger meets. On a profile, a portal, a search result. Make it count.
+
+Sessions are by appointment in Boca Raton. Book yours at theheadshotclub.co.
+
+Link in bio.
+
+#theheadshotclub #bocaratonheadshots #booknow #professionalheadshots #personalbranding</pre>
+        <div class="recipe"><b>Build:</b> shortest post in the set. Three lines, three slides. Let the type be big and the margins wide.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- L7 -->
+  <div class="post">
+    <div class="post-head"><div class="num">14</div><div class="t"><h3>Inside a session</h3><div class="goal">Goal: warmth and trust. Show the experience, not just the result.</div></div></div>
+    <div class="lbl">Carousel — 3 slides · slide 2 is behind the scenes</div>
+    <div class="rail">
+      <div class="slide ink frame"><span class="fc"></span><span class="si">1 / 3</span><div class="dh">Inside a session with the club.</div></div>
+      <div class="slide photo frame"><span class="fc"></span><span class="si">2 / 3</span><div class="eb">On set</div><div class="dh">Lights set. Coffee poured. No rush.</div><div class="photo-tag">Drop in a behind the scenes shot</div></div>
+      <div class="slide terra frame"><span class="fc"></span><span class="si">3 / 3</span><div class="dh">This is how the good ones get made.</div><div class="sub">Book yours · theheadshotclub.co</div></div>
+    </div>
+    <div class="cols">
+      <div class="story photo frame"><span class="fc"></span><div class="eb">On set</div><div class="dh">No rush. Just the right frame.</div></div>
+      <div class="caption">
+        <div class="ch">Caption <button class="copybtn" onclick="cp(this)">Copy</button></div>
+        <pre>The secret is that there is no rush.
+
+Lights set, coffee poured, and time to actually find the frame that looks like you. That is how the good ones get made.
+
+Come sit for yours. theheadshotclub.co, link in bio.
+
+#theheadshotclub #behindthescenes #bocaratonheadshots #studioday #headshotphotographer</pre>
+        <div class="recipe"><b>Build:</b> slide 2 is a warm behind the scenes photo, full bleed. This post humanizes the club between the harder CTAs.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== POSTING ORDER ===================== -->
+  <div class="quickstart" style="margin-top:48px;">
+    <h2>A simple posting rhythm</h2>
+    <p style="margin:0 0 14px;color:#444;font-size:13.5px;">No fixed dates needed. A calm, twice a week cadence keeps the feed editorial rather than noisy.</p>
+    <div class="qs-grid">
+      <div class="qs-block">
+        <h3>Before launch</h3>
+        <ul>
+          <li><b>Wk 1:</b> Post 01 (teaser) → Post 02 (manifesto)</li>
+          <li><b>Wk 2:</b> Post 03 (who it is for) → Post 04 (the collective)</li>
+          <li><b>Wk 3:</b> Post 05 (what works) → Post 06 (doors open)</li>
+          <li><b>Launch week:</b> Post 07 (first access), then go live</li>
+        </ul>
+      </div>
+      <div class="qs-block">
+        <h3>After launch</h3>
+        <ul>
+          <li><b>Day 1:</b> Post 08 (we are open) — pin it</li>
+          <li><b>Wk 1:</b> Post 09 (how it works) → Post 10 (sessions)</li>
+          <li><b>Wk 2:</b> Post 11 (the difference) → Post 12 (in their words)</li>
+          <li><b>Wk 3:</b> Post 13 (make it count) → Post 14 (inside a session)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p class="eyebrow">The Headshot Club · Est. 2026 · Boca Raton, FL</p>
+    <p>Every caption above has a Copy button. Colors, fonts, and logo guidance are in the Canva quick start at the top.</p>
+  </div>
+</div>
+
+<script>
+  function cp(btn){
+    var pre = btn.closest('.caption').querySelector('pre');
+    navigator.clipboard.writeText(pre.innerText).then(function(){
+      var t = btn.textContent; btn.textContent = 'Copied'; btn.style.background='#A8572C'; btn.style.color='#F4EFE6'; btn.style.borderColor='#A8572C';
+      setTimeout(function(){ btn.textContent = t; btn.style.background=''; btn.style.color=''; btn.style.borderColor=''; }, 1400);
+    });
+  }
+</script>
+</body>
+</html>
